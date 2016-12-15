@@ -625,7 +625,7 @@
     </p>
 
         <!-- #38473 Add item type and Shelving location -->
-        <xsl:if test="marc:datafield[@tag=952]/marc:subfield[@code='8'] or items:itemcallnumber">
+        <xsl:if test="marc:datafield[@tag=952]/marc:subfield[@code='8']">
             <xsl:if test="marc:datafield[@tag=952]/marc:subfield[@code='8']">
                 <span class="results_summary collection_note">
                     <span class="label">Collection:</span>
@@ -640,13 +640,7 @@
                                 <xsl:text> item(s)]</xsl:text>                                         
                         </xsl:for-each>
                         <xsl:if test="position() != last()">, </xsl:if>
-                    </xsl:for-each> 
-                        <!--<xsl:value-of select="marc:datafield[@tag=952]/marc:subfield[@code='8'][1]"/>-->                    
-                </span>                
-            </xsl:if>
-            <xsl:if test="items:itemcallnumber">
-                <span class="results_summary call_number_note">
-                    <span class="LabelCallNumber">Call number: </span><xsl:value-of select="items:itemcallnumber[1]"/>
+                    </xsl:for-each>                     
                 </span>                
             </xsl:if>
         </xsl:if>
@@ -1327,11 +1321,13 @@
                    <xsl:when test="$singleBranchMode=1">
                        <xsl:for-each select="$available_items[generate-id() = generate-id(key('item-by-status-and-branch-home', concat(items:status, ' ', items:homebranch))[1])]">
                            <span class="ItemSummary">
+<!-- BWS-XSLT - Hide call number. #38473
                                <xsl:if test="items:itemcallnumber != '' and items:itemcallnumber">
                                    <span class="CallNumberAndLabel">
                                        [<span class="LabelCallNumber">Call number: </span><span class="CallNumber"><xsl:value-of select="items:itemcallnumber"/></span>]
                                    </span>
                                </xsl:if>
+BWS-XSLT - Hide call number. #38473 -->
                                <xsl:text> (</xsl:text>
                                    <xsl:value-of select="count(key('item-by-status-and-branch-home', concat(items:status, ' ', items:homebranch)))"/>
                                <xsl:text>)</xsl:text>
@@ -1348,11 +1344,13 @@
                                <xsl:for-each select="$available_items[generate-id() = generate-id(key('item-by-status-and-branch-home', concat(items:status, ' ', items:homebranch))[1])]">
                                    <span class="ItemSummary">
                                        <xsl:value-of select="items:homebranch"/>
+<!-- BWS-XSLT - Hide call number. #38473
                                        <xsl:if test="items:itemcallnumber != '' and items:itemcallnumber and $OPACItemLocation='callnum'">
                                            <span class="CallNumberAndLabel">
                                                [<span class="LabelCallNumber">Call number: </span><span class="CallNumber"><xsl:value-of select="items:itemcallnumber"/></span>]
                                            </span>
                                        </xsl:if>
+BWS-XSLT - Hide call number. #38473 -->
                                        <xsl:text> (</xsl:text>
                                            <xsl:value-of select="count(key('item-by-status-and-branch-home', concat(items:status, ' ', items:homebranch)))"/>
                                        <xsl:text>)</xsl:text>
@@ -1367,11 +1365,13 @@
                                <xsl:for-each select="$available_items[generate-id() = generate-id(key('item-by-status-and-branch-holding', concat(items:status, ' ', items:holdingbranch))[1])]">
                                    <span class="ItemSummary">
                                        <xsl:value-of select="items:holdingbranch"/>
+<!-- BWS-XSLT - Hide call number. #38473
                                        <xsl:if test="items:itemcallnumber != '' and items:itemcallnumber and $OPACItemLocation='callnum'">
                                            <span class="CallNumberAndLabel">
                                                [<span class="LabelCallNumber">Call number: </span><span class="CallNumber"><xsl:value-of select="items:itemcallnumber"/></span>]
                                            </span>
                                        </xsl:if>
+BWS-XSLT - Hide call number. #38473 -->
                                        <xsl:text> (</xsl:text>
                                            <xsl:value-of select="count(key('item-by-status-and-branch-holding', concat(items:status, ' ', items:holdingbranch)))"/>
                                        <xsl:text>)</xsl:text>
@@ -1400,11 +1400,13 @@
                                 <xsl:if test="$singleBranchMode=0">
                                     <xsl:value-of select="items:homebranch"/>
                                 </xsl:if>
+<!-- BWS-XSLT - Hide call number. #38473
                                 <xsl:if test="items:itemcallnumber != '' and items:itemcallnumber">
                                     <span class="CallNumberAndLabel">
                                         [<span class="LabelCallNumber">Call number: </span><span class="CallNumber"><xsl:value-of select="items:itemcallnumber"/></span>]
                                     </span>
                                 </xsl:if>
+BWS-XSLT - Hide call number. #38473 -->    
                                 <xsl:text> (</xsl:text>
                                 <xsl:value-of select="count(key('item-by-status-and-branch-home', concat(items:status, ' ', items:homebranch)))"/>
                                 <xsl:text>)</xsl:text>

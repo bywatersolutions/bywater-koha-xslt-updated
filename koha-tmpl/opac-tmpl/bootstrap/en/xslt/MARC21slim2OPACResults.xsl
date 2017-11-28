@@ -1244,7 +1244,7 @@
                                    </span>
                                </xsl:if>
                                <xsl:text> (</xsl:text>
-                                   <xsl:value-of select="count(key('item-by-status-and-branch-home', concat(items:status, ' ', items:homebranch)))"/>
+                                 <!--  <xsl:value-of select="count(key('item-by-status-and-branch-home', concat(items:status, ' ', items:homebranch)))"/>-->
                                <xsl:text>)</xsl:text>
                                <xsl:choose>
                                    <xsl:when test="position()=last()"><xsl:text>. </xsl:text></xsl:when>
@@ -1258,7 +1258,9 @@
                             <xsl:when test="$OPACResultsLibrary='homebranch'">
                                <xsl:for-each select="$available_items[generate-id() = generate-id(key('item-by-status-and-branch-home', concat(items:status, ' ', items:homebranch))[1])]">
                                    <span class="ItemSummary">
+<!--
                                        <xsl:value-of select="items:homebranch"/>
+-->
                                        <xsl:if test="items:itemcallnumber != '' and items:itemcallnumber and $OPACItemLocation='callnum'">
                                            <span class="CallNumberAndLabel">
                                                [<span class="LabelCallNumber">Call number: </span><span class="CallNumber"><xsl:value-of select="items:itemcallnumber"/></span>]
@@ -1277,7 +1279,9 @@
                             <xsl:otherwise>
                                <xsl:for-each select="$available_items[generate-id() = generate-id(key('item-by-status-and-branch-holding', concat(items:status, ' ', items:holdingbranch))[1])]">
                                    <span class="ItemSummary">
+<span class="homebranch">                                       
                                        <xsl:value-of select="items:holdingbranch"/>
+</span>                                        
                                        <xsl:if test="items:itemcallnumber != '' and items:itemcallnumber and $OPACItemLocation='callnum'">
                                            <span class="CallNumberAndLabel">
                                                [<span class="LabelCallNumber">Call number: </span><span class="CallNumber"><xsl:value-of select="items:itemcallnumber"/></span>]

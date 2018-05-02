@@ -883,7 +883,7 @@
             <xsl:choose><xsl:when test="position()=last()"><xsl:text></xsl:text></xsl:when><xsl:otherwise><xsl:text> </xsl:text></xsl:otherwise></xsl:choose>
         </span>
     </xsl:if>
-
+<!--CUSTOM FOR VIRGINA TECH -added subfield f -->
     <xsl:if test="marc:datafield[@tag=300]">
     <span class="results_summary description"><span class="label">Description: </span>
         <xsl:for-each select="marc:datafield[@tag=300]">

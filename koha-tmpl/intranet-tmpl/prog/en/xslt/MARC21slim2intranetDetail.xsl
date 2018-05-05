@@ -1098,8 +1098,7 @@
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">abcdefghijklmnpuvwxyzot23</xsl:with-param>
                     </xsl:call-template>
-                 </xsl:for-each>
-                                      <xsl:choose>
+                    <xsl:choose>
                         <xsl:when test="position()=last()">
                            <xsl:text></xsl:text>
                         </xsl:when>
@@ -1108,6 +1107,7 @@
                            <br />
                         </xsl:otherwise>
                     </xsl:choose>
+                </xsl:for-each>
             </span>
          </xsl:if>
         
@@ -1117,7 +1117,6 @@
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">abcdefghijklmnpuvwxyzot23</xsl:with-param>
                     </xsl:call-template>
-                 </xsl:for-each>
                     <xsl:choose>
                         <xsl:when test="position()=last()">
                            <xsl:text></xsl:text>
@@ -1127,6 +1126,7 @@
                            <br />
                         </xsl:otherwise>
                     </xsl:choose>
+                </xsl:for-each>
             </span>
         </xsl:if> 
         
@@ -1136,7 +1136,6 @@
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">abcdefghijklmnpuvwxyzot23</xsl:with-param>
                     </xsl:call-template>
-                 </xsl:for-each>
                     <xsl:choose>
                         <xsl:when test="position()=last()">
                            <xsl:text></xsl:text>
@@ -1146,6 +1145,7 @@
                            <br />
                         </xsl:otherwise>
                     </xsl:choose>
+               </xsl:for-each>
             </span>
          </xsl:if> 
         

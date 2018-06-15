@@ -1231,7 +1231,7 @@
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">z</xsl:with-param>
                     </xsl:call-template>
-                    <xsl:text>: </xsl:text>
+                    <xsl:text> </xsl:text>
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">a</xsl:with-param>
                     </xsl:call-template>
@@ -1255,7 +1255,7 @@
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">z</xsl:with-param>
                     </xsl:call-template>
-                    <xsl:text>: </xsl:text>
+                    <xsl:text> </xsl:text>
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">a</xsl:with-param>
                     </xsl:call-template>
@@ -1293,7 +1293,7 @@
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">z</xsl:with-param>
                     </xsl:call-template>
-                    <xsl:text>: </xsl:text>
+                    <xsl:text> </xsl:text>
                     <xsl:call-template name="subfieldSelect">
                         <xsl:with-param name="codes">a</xsl:with-param>
                     </xsl:call-template>

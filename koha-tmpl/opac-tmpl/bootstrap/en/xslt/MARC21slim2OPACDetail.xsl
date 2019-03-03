@@ -18,7 +18,7 @@
     <xsl:template match="marc:record">
 
         <!-- Option: Display Alternate Graphic Representation (MARC 880)  -->
-        <xsl:variable name="display880" select="boolean(marc:datafield[@tag=880])"/>
+        <xsl:variable name="display880" select="false()"/><!-- RT 48588: make the display880 variable always false -->
 
     <xsl:variable name="UseControlNumber" select="marc:sysprefs/marc:syspref[@name='UseControlNumber']"/>
     <xsl:variable name="DisplayOPACiconsXSLT" select="marc:sysprefs/marc:syspref[@name='DisplayOPACiconsXSLT']"/>
@@ -230,8 +230,14 @@
         </xsl:for-each>
 
         <!-- 490 Series not traced, Ind1 = 0 -->
+<!--
         <xsl:for-each select="marc:datafield[@tag=490][@ind1!=1]">
             <a><xsl:attribute name="href">/cgi-bin/koha/opac-search.pl?q=se,phr:"<xsl:value-of select="str:encode-uri(marc:subfield[@code='a'], true())"/>"</xsl:attribute>
+-->
+        <!-- 490 Series not traced, Ind1 = 0 RT 48588: remove the Ind1=0 condition -->
+        <xsl:for-each select="marc:datafield[@tag=490]">
+            <a><xsl:attribute name="href">/cgi-bin/koha/opac-search.pl?q=se,phr:"<xsl:value-of select="marc:subfield[@code='a']"/>"</xsl:attribute>
+        <!-- /490 Series not traced, Ind1 = 0 RT 48588: remove the Ind1=0 condition -->
                         <xsl:call-template name="chopPunctuation">
                             <xsl:with-param name="chopString">
                                 <xsl:call-template name="subfieldSelect">
@@ -244,8 +250,14 @@
         <xsl:choose><xsl:when test="position()=last()"><xsl:text>.</xsl:text></xsl:when><xsl:otherwise><xsl:text>; </xsl:text></xsl:otherwise></xsl:choose>
         </xsl:for-each>
         <!-- 490 Series traced, Ind1 = 1 -->
+<!--                
         <xsl:if test="marc:datafield[@tag=490][@ind1=1]">
             <xsl:for-each select="marc:datafield[@tag=800 or @tag=810 or @tag=811]">
+-->
+        <!-- 490 Series traced, Ind1 = 1 RT 48588: ignore the specific treatment when Ind1 = 1 -->
+<!--
+        <xsl:if test="marc:datafield[@tag=490][@ind1=1]">
+            <xsl:for-each select="marc:datafield[@tag=800 or @tag=810 or @tag=811 or @tag=830]">
                 <xsl:choose>
                     <xsl:when test="$UseControlNumber = '1' and marc:subfield[@code='w']">
                         <a><xsl:attribute name="href">/cgi-bin/koha/opac-search.pl?q=rcn:<xsl:value-of select="str:encode-uri(marc:subfield[@code='w'], true())"/></xsl:attribute>
@@ -328,6 +340,7 @@
             <xsl:choose><xsl:when test="position()=last()"><xsl:text></xsl:text></xsl:when><xsl:otherwise><xsl:text>; </xsl:text></xsl:otherwise></xsl:choose>
             </xsl:for-each>
         </xsl:if>
+-->
         </span>
         </xsl:if>
 

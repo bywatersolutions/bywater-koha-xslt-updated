@@ -1357,13 +1357,13 @@
 
         </span>
         </xsl:for-each>
-        </xsl:if>
-
+        </xsl:if>-->
+        <!-- xsl was commented out until after the following block, I moved the end of the comment to just above this block.  SFkeys wanted the OPAC view link to be visible on their detail page RT 58782 joy-->
         <xsl:if test="$OPACBaseURL!=''">
         <span class="results_summary succeeding_entry_note"><span class="label">OPAC view: </span>
             <a><xsl:attribute name="href"><xsl:value-of select="$OPACBaseURL"/>/cgi-bin/koha/opac-detail.pl?biblionumber=<xsl:value-of select="str:encode-uri(marc:datafield[@tag=999]/marc:subfield[@code='c'], true())"/></xsl:attribute><xsl:attribute name="target">_blank</xsl:attribute>Open in new window</a>.
         </span>
-        </xsl:if>-->
+        </xsl:if>
 
 <!-- RT 45916 handling of field 785 -->
         <xsl:if test="marc:datafield[@tag=785]">

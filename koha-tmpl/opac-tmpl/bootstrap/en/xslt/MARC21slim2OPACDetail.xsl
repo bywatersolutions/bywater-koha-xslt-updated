@@ -225,7 +225,6 @@
                             </xsl:with-param>
                         </xsl:call-template>
             </a>
-            <xsl:text> </xsl:text>
             <xsl:call-template name="part"/>
             <xsl:choose><xsl:when test="position()=last()"><xsl:text>. </xsl:text></xsl:when><xsl:otherwise><xsl:text> ; </xsl:text></xsl:otherwise></xsl:choose>
         </xsl:for-each>
@@ -241,7 +240,6 @@
                             </xsl:with-param>
                         </xsl:call-template>
             </a>
-            <xsl:text> </xsl:text>
                     <xsl:call-template name="part"/>
         <xsl:choose><xsl:when test="position()=last()"><xsl:text>.</xsl:text></xsl:when><xsl:otherwise><xsl:text>; </xsl:text></xsl:otherwise></xsl:choose>
         </xsl:for-each>
@@ -300,7 +298,6 @@
                                 </xsl:with-param>
                             </xsl:call-template>
                         </a>
-                    
                     </xsl:when>
                     <xsl:when test="marc:subfield[@code=9] and $UseAuthoritiesForTracings='1'">
                         <a><xsl:attribute name="href">/cgi-bin/koha/opac-search.pl?q=an:<xsl:value-of select="str:encode-uri(marc:subfield[@code=9], true())"/></xsl:attribute>
@@ -323,7 +320,6 @@
                                 </xsl:with-param>
                             </xsl:call-template>
                         </a>
-                        <xsl:text> </xsl:text>
                         <xsl:call-template name="part"/>
                     </xsl:otherwise>
                 </xsl:choose>
@@ -473,17 +469,7 @@
             </xsl:for-each>
         </span>
         </xsl:if>
-<!-- #43227: Display MPAA rating for DVDs on opac-detail.pl-->
-<xsl:if test="marc:datafield[@tag=521]">
-<span class="results_summary film_rating"><span class="label">Audience: </span>
-<xsl:for-each select="marc:datafield[@tag=521]">
-<xsl:call-template name="chopPunctuation">
-<xsl:with-param name="chopString">
-<xsl:call-template name="subfieldSelect">
-<xsl:with-param name="codes">a</xsl:with-param>
-</xsl:call-template>
-</xsl:with-param>
-</xsl:call-template>
+
         <!-- Description: Alternate Graphic Representation (MARC 880) -->
         <xsl:if test="$display880">
             <xsl:call-template name="m880Select">

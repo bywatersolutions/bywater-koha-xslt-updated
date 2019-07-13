@@ -658,6 +658,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">787</xsl:with-param>
                 <xsl:with-param name="caption">Other relationship:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1124,6 +1125,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">773</xsl:with-param>
                 <xsl:with-param name="caption">In:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
 >>>>>>> e57e15fcb4... BWS-XSLT - RT 45916 update MARC21slim2intranetDetail.xsl to comment out former handling of linking entry fields and use the new linkingEntryFields template instead
         </xsl:if>
@@ -1226,6 +1228,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">775</xsl:with-param>
                 <xsl:with-param name="caption">Other editions:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1294,6 +1297,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">780</xsl:with-param>
                 <xsl:with-param name="caption">Preceding entry:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1353,19 +1357,20 @@
 
         </span>
         </xsl:for-each>
-        </xsl:if>-->
-        <!-- xsl was commented out until after the following block, I moved the end of the comment to just above this block.  SFkeys wanted the OPAC view link to be visible on their detail page RT 58782 joy-->
+        </xsl:if>
+
         <xsl:if test="$OPACBaseURL!=''">
         <span class="results_summary succeeding_entry_note"><span class="label">OPAC view: </span>
             <a><xsl:attribute name="href"><xsl:value-of select="$OPACBaseURL"/>/cgi-bin/koha/opac-detail.pl?biblionumber=<xsl:value-of select="str:encode-uri(marc:datafield[@tag=999]/marc:subfield[@code='c'], true())"/></xsl:attribute><xsl:attribute name="target">_blank</xsl:attribute>Open in new window</a>.
         </span>
-        </xsl:if>
+        </xsl:if>-->
 
 <!-- RT 45916 handling of field 785 -->
         <xsl:if test="marc:datafield[@tag=785]">
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">785</xsl:with-param>
                 <xsl:with-param name="caption">Succeeding entry:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1374,6 +1379,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">760</xsl:with-param>
                 <xsl:with-param name="caption">Main series:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1381,6 +1387,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">762</xsl:with-param>
                 <xsl:with-param name="caption">Has subseries:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1388,6 +1395,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">765</xsl:with-param>
                 <xsl:with-param name="caption">Translation of:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1395,6 +1403,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">767</xsl:with-param>
                 <xsl:with-param name="caption">Translated as:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1402,6 +1411,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">770</xsl:with-param>
                 <xsl:with-param name="caption">Has series:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1409,6 +1419,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">772</xsl:with-param>
                 <xsl:with-param name="caption">Supplement to:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1416,6 +1427,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">774</xsl:with-param>
                 <xsl:with-param name="caption">Constituent unit:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1423,6 +1435,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">776</xsl:with-param>
                 <xsl:with-param name="caption">Available in another form:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1430,6 +1443,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">777</xsl:with-param>
                 <xsl:with-param name="caption">Issued with:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -1437,6 +1451,7 @@
             <xsl:call-template name="linkingEntryFields">
                 <xsl:with-param name="field">786</xsl:with-param>
                 <xsl:with-param name="caption">Data source:</xsl:with-param>
+                <xsl:with-param name="MyUseControlNumber">$UseControlNumber</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
